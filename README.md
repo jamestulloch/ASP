@@ -1,92 +1,60 @@
-# ASP
+James Tulloch - Student No: 21032766
 
+README
+Task 1
+Implement a class which prints the following output.
 
+Output:
 
-## Getting started
+Hello world - String S is constructed and printed. Hello world - New scope, T is asssigned as an object which is a copy of S. Hello world - Prints the content of S again. e - Gets the char at the index of [1] in S, which is 'e'. Hello world - Prints the contents of S again. Hello world - Prints the contents of T again. HEllo world - S is modified so that the char at the index of [1] is now 'E'.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+[!To run this file:] clang++ filetest_string.cpp my_string.cpp ./a.out
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Description:
 
-## Add your files
+The class my_string is correctly implemented and prints the ouput specified. It does so through using constructors, copy constructors and a destructor. It also has the functions get and set char, for the 4th line of output 'e' and the 7th line, where "Hello" is changed to be "HEllo"
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+Task 2
+Extend the programme to support automatic reference counting.
 
-```
-cd existing_repo
-git remote add origin https://gitlab.uwe.ac.uk/j2-tulloch/asp.git
-git branch -M main
-git push -uf origin main
-```
+Output:
 
-## Integrate with your tools
+Hello world [1] - One instance of S exists, reference count is 1. Hello world [2] - Two references of S now exist, with T being a copy of S. The reference count is now 2. Hello world [2] - S is printed, there are still two objects which refer to the contents of S. e - No reference is printed because a specific index of s, [1], is being called instead of the object. Hello world [2] - *S is printed again, the objects refering to its content are still 2. * Hello world [2]- T is printed again, the the objects refering to the content of S are still 2. \ HEllo world [1] - T is now out of scope, and S[1] is modified to be 'E' instead of 'e'. There is now only one reference to the contents of S.
 
-- [ ] [Set up project integrations](https://gitlab.uwe.ac.uk/j2-tulloch/asp/-/settings/integrations)
+[!To run this file:] clang++ filetest_string.cpp my_string.cpp ./a.out
 
-## Collaborate with your team
+Description:
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+The reference counting is implemented in the my_string class, with a pointer called "reference_count". This pointer keeps track of how many instances of the object are in existence, when they are constructed or destroyed.
 
-## Test and Deploy
+Task 3
+Extend the programme to demonstrate a reference count of 0.
 
-Use the built-in continuous integration in GitLab.
+Output:
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+Hello world [1] Hello world [2] Hello world [2] e \ Hello world [2] \ Hello world [2] HEllo world [1] Reference count is now 0, freeing memory. - Once the final object of S is destroyed, the memory is freed using 'nullptr', setting its value to 0.
 
-***
+[!To run this file:]
 
-# Editing this README
+clang++ -o task3 filetest_string.cpp my_string.cpp
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+./task3
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+Description:
 
-## Name
-Choose a self-explaining name for your project.
+The implementation deletes the pointer to the reference count using "nullptr" when the destructor is called. This returns the memory used to null or 0.
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+Task 4
+Extend the example so reference counting is in a template rather than the "my_string" class.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+Output:
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+Hello world [1] Hello world [2] Hello world [2] e \ Hello world [2] Hello world [2] HEllo world [2] - The output is the same as task 2, despite the template being called and instead of using "ref_count" from within the class.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+[!To run this file:] clang++ -o task4 filetest_string.cpp my_string.cpp
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+./task4
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+Description:
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+The class RefCount is implemented in the header file refcount.hpp. This file contains the functionality of task 3's "refcount" implementation inside of the "my_string" class and creates it as a template.
