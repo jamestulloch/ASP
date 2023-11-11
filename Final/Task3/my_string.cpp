@@ -65,5 +65,5 @@ my_string* my_string::operator->() {
     return ptr;
 }
 
-
+// Reference OPENAI CHATGPT, 2023.  ChatGPT response to James Tulloch, (personal communication, 1st November)
 
