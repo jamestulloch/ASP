@@ -1,11 +1,9 @@
-// Ensure the header is only included once per compilation unit
 #ifndef MY_STRING_HPP
 #define MY_STRING_HPP
 
 #include <iostream>
 #include <cstring>
 
-// my_string class declaration
 class my_string {
 private:
     char* data; // The data pointer for the string's characters
