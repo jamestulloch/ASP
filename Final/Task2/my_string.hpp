@@ -1,4 +1,3 @@
-// Ensure the header is only included once per compilation unit
 #ifndef MY_STRING_HPP
 #define MY_STRING_HPP
 
