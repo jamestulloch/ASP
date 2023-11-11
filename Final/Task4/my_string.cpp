@@ -63,3 +63,5 @@ void my_string::setChar(const int& i, const char& c) {
 void my_string::print() const {
     std::cout << data.get() << " [" << data.getCount() << "]" << std::endl;
 }
+
+// Reference OPENAI CHATGPT, 2023.  ChatGPT response to James Tulloch, (personal communication, 6th November)
