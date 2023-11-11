@@ -28,3 +28,4 @@ public:
 };
 
 #endif // MY_STRING_HPP
+// Reference OPENAI CHATGPT, 2023.  ChatGPT response to James Tulloch, (personal communication, 6th November)
