@@ -1,6 +1,6 @@
 #include "my_string.hpp"
 
-// Constructor implementations
+// Constructor 
 my_string::my_string() : data(new char[1]), reference_count(new int(1)) {
     data[0] = '\0';
 }
